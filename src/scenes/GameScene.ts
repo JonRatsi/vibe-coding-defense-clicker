@@ -37,7 +37,6 @@ export class GameScene extends Scene {
 
     private scoreText!: Phaser.GameObjects.Text;
     private highScoreText!: Phaser.GameObjects.Text;
-    private clickPowerText!: Phaser.GameObjects.Text;
     private healthText!: Phaser.GameObjects.Text;
     private spawnTimer!: Phaser.Time.TimerEvent;
     private difficultyTimer!: Phaser.Time.TimerEvent;
@@ -82,7 +81,6 @@ export class GameScene extends Scene {
         // Créer les textes d'interface
         this.scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', color: '#fff' });
         this.highScoreText = this.add.text(16, 50, 'High Score: ' + this.state.highScore, { fontSize: '32px', color: '#fff' });
-        this.clickPowerText = this.add.text(16, 84, 'Puissance de clic: ' + this.state.clickPower, { fontSize: '32px', color: '#fff' });
         this.healthText = this.add.text(16, 118, 'PV: ' + this.state.health + '/' + this.state.maxHealth, { fontSize: '32px', color: '#fff' });
 
         // Démarrer le spawn d'ennemis
@@ -273,7 +271,7 @@ export class GameScene extends Scene {
         this.state.enemies = [];
 
         // Afficher le message de game over
-        const gameOverText = this.add.text(
+        this.add.text(
             this.cameras.main.centerX,
             this.cameras.main.centerY,
             'GAME OVER\nScore: ' + this.state.score + '\nHigh Score: ' + this.state.highScore,
