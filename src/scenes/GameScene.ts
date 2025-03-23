@@ -38,6 +38,7 @@ export class GameScene extends Scene {
     private scoreText!: Phaser.GameObjects.Text;
     private highScoreText!: Phaser.GameObjects.Text;
     private healthText!: Phaser.GameObjects.Text;
+    private clickPowerText!: Phaser.GameObjects.Text;
     private spawnTimer!: Phaser.Time.TimerEvent;
     private difficultyTimer!: Phaser.Time.TimerEvent;
 
@@ -61,6 +62,7 @@ export class GameScene extends Scene {
         }
         if (savedClickPowerUpgrade) {
             this.state.clickPower = 1 + parseInt(savedClickPowerUpgrade);
+            this.clickPowerText.setText('Puissance: ' + this.state.clickPower);
         }
 
         // Créer la zone centrale
@@ -81,7 +83,8 @@ export class GameScene extends Scene {
         // Créer les textes d'interface
         this.scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', color: '#fff' });
         this.highScoreText = this.add.text(16, 50, 'High Score: ' + this.state.highScore, { fontSize: '32px', color: '#fff' });
-        this.healthText = this.add.text(16, 118, 'PV: ' + this.state.health + '/' + this.state.maxHealth, { fontSize: '32px', color: '#fff' });
+        this.healthText = this.add.text(16, 84, 'PV: ' + this.state.health + '/' + this.state.maxHealth, { fontSize: '32px', color: '#fff' });
+        this.clickPowerText = this.add.text(16, 118, 'Puissance: ' + this.state.clickPower, { fontSize: '32px', color: '#fff' });
 
         // Démarrer le spawn d'ennemis
         this.spawnTimer = this.time.addEvent({
