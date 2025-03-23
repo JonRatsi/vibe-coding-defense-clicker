@@ -85,6 +85,7 @@ export class GameScene extends Scene {
         this.highScoreText = this.add.text(16, 50, 'High Score: ' + this.state.highScore, { fontSize: '32px', color: '#fff' });
         this.healthText = this.add.text(16, 84, 'PV: ' + this.state.health + '/' + this.state.maxHealth, { fontSize: '32px', color: '#fff' });
         this.clickPowerText = this.add.text(16, 118, 'Puissance: ' + this.state.clickPower, { fontSize: '32px', color: '#fff' });
+        this.add.text(16, 152, 'Points: ' + localStorage.getItem('totalPoints') || '0', { fontSize: '32px', color: '#fff' });
 
         // Démarrer le spawn d'ennemis
         this.spawnTimer = this.time.addEvent({
